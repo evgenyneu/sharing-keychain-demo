@@ -4,7 +4,7 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>login_group.com.my_app_bundle_id</string>
+		<string>login-group.com.my-app-bundle-id</string>
 	</array>
 </dict>
 </plist>
