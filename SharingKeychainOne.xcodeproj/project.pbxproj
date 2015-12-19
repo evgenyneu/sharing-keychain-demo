@@ -23,6 +23,7 @@
 		7E2A58D11C24DEA3009986DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E2A58D31C24DEA3009986DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E2A58D91C24E968009986DF /* SharingKeychainOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SharingKeychainOne.entitlements; sourceTree = "<group>"; };
+		7E2A58DA1C24F441009986DF /* KeychainSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 				7E2A58CE1C24DEA3009986DF /* Assets.xcassets */,
 				7E2A58D01C24DEA3009986DF /* LaunchScreen.storyboard */,
 				7E2A58D31C24DEA3009986DF /* Info.plist */,
+				7E2A58DA1C24F441009986DF /* KeychainSwift.swift */,
 			);
 			path = SharingKeychainOne;
 			sourceTree = "<group>";
