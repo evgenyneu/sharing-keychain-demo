@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     let itemKey = "My item key"
+    let itemValue = "My secret data 🐝"
     let keychainAccessGroupName = "login-group.com.my-app-bundle-id"
     
     // Delete existing key
@@ -32,11 +33,16 @@ class ViewController: UIViewController {
     // Save a shared Keychain item
     // ----------------
     
+    guard let valueData = itemValue.dataUsingEncoding(NSUTF8StringEncoding) else {
+      print("Error saving text to keychain")
+      return
+    }
+    
     let queryAdd: [String: AnyObject] = [
       kSecAttrAccessible as String: kSecAttrAccessible,
       kSecClass as String: kSecClassGenericPassword,
       kSecAttrAccount as String: itemKey,
-      kSecValueData as String: "My secret data 🐝",
+      kSecValueData as String: valueData,
       kSecAttrAccessGroup as String: keychainAccessGroupName
     ]
     
