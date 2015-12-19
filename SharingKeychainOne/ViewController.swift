@@ -13,26 +13,19 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-   
-  }
-  
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-    
-    
     let itemKey = "My key"
     let itemValue = "My secretive bee 🐝"
     let keychainAccessGroupName = "login-group.com.my-app-bundle-id"
     
     // Delete existing key
     // ----------------
-
+    
     let queryDelete: [String: AnyObject] = [
       kSecClass as String: kSecClassGenericPassword,
       kSecAttrAccount as String: itemKey,
       kSecAttrAccessGroup as String: keychainAccessGroupName
     ]
-
+    
     let resultCodeDelete = SecItemDelete(queryDelete as CFDictionaryRef)
     
     if resultCodeDelete != noErr {
@@ -63,7 +56,7 @@ class ViewController: UIViewController {
     
     // Load a shared Keychain item
     // ----------------
-
+    
     let queryLoad: [String: AnyObject] = [
       kSecClass as String: kSecClassGenericPassword,
       kSecAttrAccount as String: itemKey,
@@ -71,30 +64,23 @@ class ViewController: UIViewController {
       kSecMatchLimit as String: kSecMatchLimitOne,
       kSecAttrAccessGroup as String: keychainAccessGroupName
     ]
-
+    
     var result: AnyObject?
-
+    
     let resultCodeLoad = withUnsafeMutablePointer(&result) {
       SecItemCopyMatching(queryLoad, UnsafeMutablePointer($0))
     }
-
+    
     if resultCodeLoad == noErr {
       if let result = result as? NSData,
         keyValue = NSString(data: result,
           encoding: NSUTF8StringEncoding) as? String {
-
-        print(keyValue)
+            
+            print(keyValue)
       }
     } else {
       print("Error loading from Keychain: \(resultCodeLoad)")
     }
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
-
 }
 
