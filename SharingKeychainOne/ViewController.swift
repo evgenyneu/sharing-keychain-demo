@@ -34,13 +34,16 @@ class ViewController: UIViewController {
     ]
 
     let resultCodeDelete = SecItemDelete(queryDelete as CFDictionaryRef)
-    if resultCodeDelete != noErr { print("Error deleting from Keychain: \(resultCodeDelete)") }
+    
+    if resultCodeDelete != noErr {
+      print("Error deleting from Keychain: \(resultCodeDelete)")
+    }
     
     // Save a shared Keychain item
     // ----------------
     
     guard let valueData = itemValue.dataUsingEncoding(NSUTF8StringEncoding) else {
-      print("Error saving text to keychain")
+      print("Error saving text to Keychain")
       return
     }
     
@@ -53,7 +56,10 @@ class ViewController: UIViewController {
     ]
     
     let resultCode = SecItemAdd(queryAdd as CFDictionaryRef, nil)
-    if resultCode != noErr { print("Error saving to Keychain: \(resultCode)") }
+    
+    if resultCode != noErr {
+      print("Error saving to Keychain: \(resultCode)")
+    }
     
     // Load a shared Keychain item
     // ----------------
@@ -74,11 +80,14 @@ class ViewController: UIViewController {
 
     if resultCodeLoad == noErr {
       if let result = result as? NSData,
-        keyValue = NSString(data: result, encoding: NSUTF8StringEncoding) as? String {
+        keyValue = NSString(data: result,
+          encoding: NSUTF8StringEncoding) as? String {
 
         print(keyValue)
       }
-    } else { print("Error loading from Keychain: \(resultCodeLoad)") }
+    } else {
+      print("Error loading from Keychain: \(resultCodeLoad)")
+    }
   }
 
   override func didReceiveMemoryWarning() {
