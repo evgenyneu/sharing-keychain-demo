@@ -22,6 +22,7 @@
 		7E2A58CE1C24DEA3009986DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E2A58D11C24DEA3009986DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E2A58D31C24DEA3009986DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E2A58D91C24E968009986DF /* SharingKeychainOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SharingKeychainOne.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +55,7 @@
 		7E2A58C61C24DEA3009986DF /* SharingKeychainOne */ = {
 			isa = PBXGroup;
 			children = (
+				7E2A58D91C24E968009986DF /* SharingKeychainOne.entitlements */,
 				7E2A58C71C24DEA3009986DF /* AppDelegate.swift */,
 				7E2A58C91C24DEA3009986DF /* ViewController.swift */,
 				7E2A58CB1C24DEA3009986DF /* Main.storyboard */,
@@ -96,6 +98,12 @@
 				TargetAttributes = {
 					7E2A58C31C24DEA3009986DF = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = BS677JRE62;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -249,6 +257,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SharingKeychainOne/SharingKeychainOne.entitlements;
 				INFOPLIST_FILE = SharingKeychainOne/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.evgenii.SharingKeychainOne;
@@ -260,6 +269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SharingKeychainOne/SharingKeychainOne.entitlements;
 				INFOPLIST_FILE = SharingKeychainOne/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.evgenii.SharingKeychainOne;
