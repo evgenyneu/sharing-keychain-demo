@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OneKeychain" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWt-Ld-o9d">
+                                <rect key="frame" x="285" y="42" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="didTapAddButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JuO-jv-8w4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBQ-qb-VsR">
+                                <rect key="frame" x="285" y="92" width="30" height="30"/>
+                                <state key="normal" title="Get"/>
+                                <connections>
+                                    <action selector="didTapGetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tfj-wh-YMf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GkD-cF-GFi">
+                                <rect key="frame" x="273" y="138" width="55" height="30"/>
+                                <state key="normal" title="Remove"/>
+                                <connections>
+                                    <action selector="didTapRemoveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XyU-BH-kif"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiY-eO-y4z">
+                                <rect key="frame" x="279" y="218" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GkD-cF-GFi" firstAttribute="top" secondItem="EBQ-qb-VsR" secondAttribute="bottom" constant="16" id="0SJ-ht-wcV"/>
+                            <constraint firstItem="HWt-Ld-o9d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="27T-s6-0EM"/>
+                            <constraint firstItem="GkD-cF-GFi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3zh-3I-JuH"/>
+                            <constraint firstItem="EBQ-qb-VsR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JRx-qP-Y1Y"/>
+                            <constraint firstItem="BiY-eO-y4z" firstAttribute="top" secondItem="GkD-cF-GFi" secondAttribute="bottom" constant="50" id="PIN-j0-2YT"/>
+                            <constraint firstItem="BiY-eO-y4z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RvB-6k-JxV"/>
+                            <constraint firstItem="HWt-Ld-o9d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="22" id="jQJ-Oj-ti0"/>
+                            <constraint firstItem="EBQ-qb-VsR" firstAttribute="top" secondItem="HWt-Ld-o9d" secondAttribute="bottom" constant="20" id="xUT-Ue-A6g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="BiY-eO-y4z" id="aF8-ho-lyC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

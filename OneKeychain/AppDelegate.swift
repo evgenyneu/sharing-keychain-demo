@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  SharingKeychainOne
+//  OneKeychain
 //
-//  Created by Evgenii on 19/12/2015.
-//  Copyright © 2015 Evgenii Neumerzhitckii. All rights reserved.
+//  Created by Evgenii on 28/05/2016.
+//  Copyright © 2016 Evgenii Neumerzhitckii. All rights reserved.
 //
 
 import UIKit
