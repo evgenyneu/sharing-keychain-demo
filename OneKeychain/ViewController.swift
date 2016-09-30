@@ -18,7 +18,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let appIdPrefix = NSBundle.mainBundle().objectForInfoDictionaryKey("AppIdentifierPrefix")
+    let appIdPrefix = Bundle.main.object(forInfoDictionaryKey: "AppIdentifierPrefix")
     print(appIdPrefix)
     
     // Use your App ID Prefix here instead of 'AB123CDE45'
@@ -26,21 +26,21 @@ class ViewController: UIViewController {
     keychainWrapper.accessGroup = "AB123CDE45.myKeychainGroup1"
   }
 
-  @IBAction func didTapAddButton(sender: AnyObject) {
+  @IBAction func didTapAddButton(_ sender: AnyObject) {
     keychainWrapper.add(keychainItemKey, itemValue: "myValue")
     showKeychainItem()
   }
   
-  @IBAction func didTapGetButton(sender: AnyObject) {
+  @IBAction func didTapGetButton(_ sender: AnyObject) {
     label.text = keychainWrapper.find(keychainItemKey)
     showKeychainItem()
   }
   
-  private func showKeychainItem() {
+  fileprivate func showKeychainItem() {
     label.text = keychainWrapper.find(keychainItemKey)
   }
   
-  @IBAction func didTapRemoveButton(sender: AnyObject) {
+  @IBAction func didTapRemoveButton(_ sender: AnyObject) {
     keychainWrapper.delete(keychainItemKey)
     showKeychainItem()
   }

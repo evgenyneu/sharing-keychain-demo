@@ -8,10 +8,10 @@ import Foundation
  Source: http://evgenii.com/blog/sharing-keychain-in-ios/
  
 */
-public class KeychainTextWrapper {
+open class KeychainTextWrapper {
 
   /// Supply an optional Keychain access group to access shared Keychain items.
-  public var accessGroup: String?;
+  open var accessGroup: String?;
   
   /**
    
@@ -22,8 +22,9 @@ public class KeychainTextWrapper {
    - returns: True if the text was successfully written to the keychain.
    
    */
-  public func add(itemKey: String, itemValue: String) -> Bool {
-    guard let valueData = itemValue.dataUsingEncoding(NSUTF8StringEncoding) else {
+  @discardableResult
+  open func add(_ itemKey: String, itemValue: String) -> Bool {
+    guard let valueData = itemValue.data(using: String.Encoding.utf8) else {
       return false
     }
     
@@ -32,16 +33,16 @@ public class KeychainTextWrapper {
     
     var queryAdd: [String: AnyObject] = [
       kSecClass as String: kSecClassGenericPassword,
-      kSecAttrAccount as String: itemKey,
-      kSecValueData as String: valueData,
+      kSecAttrAccount as String: itemKey as AnyObject,
+      kSecValueData as String: valueData as AnyObject,
       kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked
     ]
     
     if let accessGroup = accessGroup {
-      queryAdd[kSecAttrAccessGroup as String] = accessGroup
+      queryAdd[kSecAttrAccessGroup as String] = accessGroup as AnyObject?
     }
     
-    let resultCode = SecItemAdd(queryAdd as CFDictionaryRef, nil)
+    let resultCode = SecItemAdd(queryAdd as CFDictionary, nil)
     
     if resultCode != noErr { return false }
     
@@ -56,28 +57,28 @@ public class KeychainTextWrapper {
    - returns: The text value from the keychain. Returns nil if unable to read the item.
    
   */
-  public func find(itemKey: String) -> String? {
+  open func find(_ itemKey: String) -> String? {
     var queryLoad: [String: AnyObject] = [
       kSecClass as String: kSecClassGenericPassword,
-      kSecAttrAccount as String: itemKey,
+      kSecAttrAccount as String: itemKey as AnyObject,
       kSecReturnData as String: kCFBooleanTrue,
       kSecMatchLimit as String: kSecMatchLimitOne
     ]
     
     if let accessGroup = accessGroup {
-      queryLoad[kSecAttrAccessGroup as String] = accessGroup
+      queryLoad[kSecAttrAccessGroup as String] = accessGroup as AnyObject?
     }
     
     var result: AnyObject?
     
-    let resultCodeLoad = withUnsafeMutablePointer(&result) {
-      SecItemCopyMatching(queryLoad, UnsafeMutablePointer($0))
+    let resultCodeLoad = withUnsafeMutablePointer(to: &result) {
+      SecItemCopyMatching(queryLoad as CFDictionary, UnsafeMutablePointer($0))
     }
     
     if resultCodeLoad == noErr {
-      if let result = result as? NSData,
-        keyValue = NSString(data: result,
-                            encoding: NSUTF8StringEncoding) as? String {
+      if let result = result as? Data,
+        let keyValue = NSString(data: result,
+                            encoding: String.Encoding.utf8.rawValue) as? String {
         
         return keyValue
       }
@@ -94,17 +95,18 @@ public class KeychainTextWrapper {
    - returns: True if the item was successfully deleted.
    
   */
-  public func delete(itemKey: String) -> Bool {
+  @discardableResult
+  open func delete(_ itemKey: String) -> Bool {
     var queryDelete: [String: AnyObject] = [
       kSecClass as String: kSecClassGenericPassword,
-      kSecAttrAccount as String: itemKey
+      kSecAttrAccount as String: itemKey as AnyObject
     ]
     
     if let accessGroup = accessGroup {
-      queryDelete[kSecAttrAccessGroup as String] = accessGroup
+      queryDelete[kSecAttrAccessGroup as String] = accessGroup as AnyObject?
     }
     
-    let resultCodeDelete = SecItemDelete(queryDelete as CFDictionaryRef)
+    let resultCodeDelete = SecItemDelete(queryDelete as CFDictionary)
     
     if resultCodeDelete != noErr { return false }
     
